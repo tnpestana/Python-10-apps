@@ -1,0 +1,3 @@
+value in fahrenheit: 50.0
+value in fahrenheit: -4.0
+value in fahrenheit: 212.0
