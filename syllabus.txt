@@ -15,7 +15,7 @@
   > Dates and times
   > Mergins text files
 
-8. Building an interactive dictionary
+8. App 1: Building an interactive dictionary
 
 9. Data analysis with pandas
   > iPython
