@@ -1,0 +1,22 @@
+1. Getting started
+
+2. Variables, data types and functions
+
+3. Dealing with errors
+
+4. Conditionals
+
+5. Loops and user input
+
+6. File handling
+
+7. More functionalities
+  > Modules, libraries and packages
+  > Dates and times
+  > Mergins text files
+
+8. Building an interactive dictionary
+
+9. Data analysis with pandas
+  > iPython
+  > Jupyter notebooks
