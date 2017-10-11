@@ -22,3 +22,5 @@
   > Jupyter notebooks
 
 10. Numpy
+
+11. App 2: Creating webmaps with Python and Folium
