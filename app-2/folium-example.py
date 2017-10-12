@@ -25,9 +25,13 @@ elevation=list(data["ELEV"])
 # the zip object returns a tuple with two values from the lists and its next() method increments them at the same time
 for lat,lon,elev in zip(latitude, longitude, elevation):
     # create a marker on the map and display the elevation of each marked spot
-    group.add_child(folium.CircleMarker(location=[lat,lon], color="grey", popup="elevation: "+str(elev)+"m", fill=True, fill_color=elevation_color(elev), fill_opacity=0.8))
+    group.add_child(folium.CircleMarker(location=[lat,lon], color="grey", popup="elevation: "+str(elev)+"m",
+    fill=True, fill_color=elevation_color(elev), fill_opacity=0.8))
 
-group.add_child(folium.GeoJson(data=open('world.json', 'r', encoding='utf-8-sig').read()))
+# create layers delimiting countryes usign coordinates extracted from the world.json file
+group.add_child(folium.GeoJson(data=open('world.json', 'r', encoding='utf-8-sig').read(), 
+style_function=lambda x: {'fillColor':'green' if x['properties']['POP2005'] < 10000000
+else 'orange' if 10000000 <= x['properties']['POP2005'] < 20000000 else 'red'}))
 
 # add feature group properties to our map
 map.add_child(group)
