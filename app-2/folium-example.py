@@ -27,6 +27,8 @@ for lat,lon,elev in zip(latitude, longitude, elevation):
     # create a marker on the map and display the elevation of each marked spot
     group.add_child(folium.CircleMarker(location=[lat,lon], color="grey", popup="elevation: "+str(elev)+"m", fill=True, fill_color=elevation_color(elev), fill_opacity=0.8))
 
+group.add_child(folium.GeoJson(data=open('world.json', 'r', encoding='utf-8-sig').read()))
+
 # add feature group properties to our map
 map.add_child(group)
 
