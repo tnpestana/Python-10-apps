@@ -10,7 +10,7 @@ def elevation_color(elev):
         return "red"
 
 # create a map object (removed tiles="Mapbox Bright")
-map=folium.Map(location=[38.76, -9.2], zoom_start=10)
+map=folium.Map(location=[39.505903, -112.435760], zoom_start=5)
 # create a feature group
 group=folium.FeatureGroup(name="my map")
 
