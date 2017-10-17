@@ -1,5 +1,5 @@
-# import Flask class object from flasj library
-from flask import Flask
+# import Flask class object from flask library
+from flask import Flask, render_template
 
 # instanciate the flask object
 app=Flask(__name__)
@@ -7,11 +7,11 @@ app=Flask(__name__)
 # app.route defines the URL of the page relative to localhost
 @app.route('/')
 def home():
-    return "home goes here"
+    return render_template("home.html")
 
 @app.route('/about/')
 def about():
-    return "about page goes here"
+    return render_template("about.html")
 
 if __name__=="__main__":
     app.run(debug=True)
