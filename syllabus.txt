@@ -24,3 +24,10 @@
 10. Numpy
 
 11. App 2: Creating webmaps with Python and Folium
+
+12. App 3: Create a Website Blocker
+  > Script changes the hosts files to block certain domains
+  > Scripts running in background with .pyw
+  > Create scheduled task to run script at startup
+
+13: App 4: Create a WebApp with Python and Flask
