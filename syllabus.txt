@@ -31,3 +31,5 @@
   > Create scheduled task to run script at startup
 
 13: App 4: Create a WebApp with Python and Flask
+  > virtualenv
+  > Heroku cloud
