@@ -13,15 +13,19 @@ def create_table():
     conn.close()
 
 def insert(item,quantity,price):
-    # create connection
     conn=sqlite3.connect("classes/15-Databases/lite.db")
-    # create cursor object
     cur=conn.cursor()
-    # execute sql command
     cur.execute("INSERT INTO store VALUES(?,?,?)",(item,quantity,price))
-    # commit changes to the db
     conn.commit()
-    # close connection
     conn.close()
 
-insert("Coffe Cup",23,7)
+def view():
+    conn=sqlite3.connect("classes/15-Databases/lite.db")
+    cur=conn.cursor()
+    cur.execute("SELECT * FROM store")
+    # store the elements in our table as a list
+    rows=cur.fetchall()
+    conn.close()
+    return rows
+
+print(view())
