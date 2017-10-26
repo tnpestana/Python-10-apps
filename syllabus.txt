@@ -35,3 +35,6 @@
   > Heroku cloud
 
 14. Building Graphical User Interfaces with Tkinter
+  > windows and widgets
+
+15. Intro to Databases
