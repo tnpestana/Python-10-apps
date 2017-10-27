@@ -12,13 +12,6 @@ def create_table():
     # close connection
     conn.close()
 
-def insert(item,quantity,price):
-    conn=sqlite3.connect("classes/15-Databases/lite.db")
-    cur=conn.cursor()
-    cur.execute("INSERT INTO store VALUES(?,?,?)",(item,quantity,price))
-    conn.commit()
-    conn.close()
-
 def view():
     conn=sqlite3.connect("classes/15-Databases/lite.db")
     cur=conn.cursor()
@@ -28,6 +21,13 @@ def view():
     conn.close()
     return rows
 
+def insert(item,quantity,price):
+    conn=sqlite3.connect("classes/15-Databases/lite.db")
+    cur=conn.cursor()
+    cur.execute("INSERT INTO store VALUES(?,?,?)",(item,quantity,price))
+    conn.commit()
+    conn.close()
+
 def delete(item):
     conn=sqlite3.connect("classes/15-Databases/lite.db")
     cur=conn.cursor()
@@ -35,5 +35,13 @@ def delete(item):
     conn.commit()
     conn.close
 
-delete("Wine Glass")
+def update(item,quantity,price):
+    conn=sqlite3.connect("classes/15-Databases/lite.db")
+    cur=conn.cursor()
+    cur.execute("UPDATE store SET quantity=?, price=? WHERE item=?",(quantity,price,item))
+    conn.commit()
+    conn.close
+
+#delete("Wine Glass")
+update("Water Glass",27,1.5)
 print(view())
