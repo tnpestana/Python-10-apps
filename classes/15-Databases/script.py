@@ -28,4 +28,12 @@ def view():
     conn.close()
     return rows
 
+def delete(item):
+    conn=sqlite3.connect("classes/15-Databases/lite.db")
+    cur=conn.cursor()
+    cur.execute("DELETE FROM store WHERE item=?",(item,))
+    conn.commit()
+    conn.close
+
+delete("Wine Glass")
 print(view())
