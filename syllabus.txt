@@ -38,4 +38,4 @@
   > windows and widgets
 
 15. Intro to Databases
-  > sqlite3 and psycopg2 libraries
+  > sqlite3 (SQLLite) and psycopg2 (PostgreSQL) libraries
