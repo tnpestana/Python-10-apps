@@ -43,5 +43,5 @@ def update(item,quantity,price):
     conn.close
 
 create_table()
-insert("Orange",10,2)
-#print(view())
+#insert("Orange",10,2)
+print(view())
