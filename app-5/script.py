@@ -63,6 +63,7 @@ def update():
     conn.close
 
 def search():
+    listbox.delete(0, END)
     title=entry_title_var.get()
     conn=sqlite3.connect("app-5/bookstore.db")
     cur=conn.cursor()
