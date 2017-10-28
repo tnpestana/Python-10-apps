@@ -13,7 +13,7 @@ def create_table():
     # create cursor object
     cur=conn.cursor()
     # execute sql command
-    cur.execute("CREATE TABLE IF NOT EXISTS books (title TEXT, author TEXT, year INTEGER, isbn TEXT)")
+    cur.execute("CREATE TABLE IF NOT EXISTS books (title TEXT, author TEXT, year TEXT, isbn TEXT)")
     # commit changes to the db
     conn.commit()
     # close connection
@@ -49,8 +49,6 @@ def update(title,author,year,isbn):
     conn.commit()
     conn.close
 
-#print(view())
-############################################################
 
 # title input area
 label_title=Label(window,text="Title: ")
@@ -81,11 +79,11 @@ entry_isbn=Entry(window,textvariable=entry_isbn_var)
 entry_isbn.grid(row=1,column=3)
 
 # buttons
-button_viewall=Button(window,text="View All",width=15)
+button_viewall=Button(window,text="View All",width=15,command=print(view()))
 button_viewall.grid(row=2,column=3)
 button_searchentry=Button(window,text="Search Entry",width=15)
 button_searchentry.grid(row=3,column=3)
-button_addentry=Button(window,text="Add Entry",width=15)
+button_addentry=Button(window,text="Add Entry",width=15,command=insert(entry_title_var.get(),entry_author_var.get(),entry_year_var.get(),entry_isbn_var.get()))
 button_addentry.grid(row=4,column=3)
 button_updateselected=Button(window,text="Update Selected",width=15)
 button_updateselected.grid(row=5,column=3)
