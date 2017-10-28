@@ -9,43 +9,43 @@ window=Tk()
 
 def create_table():
     # create connection
-    conn=sqlite3.connect("classes/15-Databases/lite.db")
+    conn=sqlite3.connect("app-5/bookstore.db")
     # create cursor object
     cur=conn.cursor()
     # execute sql command
-    cur.execute("CREATE TABLE IF NOT EXISTS store (item TEXT, quantity INTEGER, price REAL)")
+    cur.execute("CREATE TABLE IF NOT EXISTS books (title TEXT, author TEXT, year INTEGER, isbn TEXT)")
     # commit changes to the db
     conn.commit()
     # close connection
     conn.close()
 
 def view():
-    conn=sqlite3.connect("classes/15-Databases/lite.db")
+    conn=sqlite3.connect("app-5/bookstore.db")
     cur=conn.cursor()
-    cur.execute("SELECT * FROM store")
+    cur.execute("SELECT * FROM books")
     # store the elements in our table as a list
     rows=cur.fetchall()
     conn.close()
     return rows
 
-def insert(item,quantity,price):
-    conn=sqlite3.connect("app-5/lite.db")
+def insert(title,author,year,isbn):
+    conn=sqlite3.connect("app-5/bookstore.db")
     cur=conn.cursor()
-    cur.execute("INSERT INTO store VALUES(?,?,?)",(item,quantity,price))
+    cur.execute("INSERT INTO books VALUES(?,?,?,?)",(title,author,year,isbn))
     conn.commit()
     conn.close()
 
-def delete(item):
-    conn=sqlite3.connect("classes/15-Databases/lite.db")
+def delete(title):
+    conn=sqlite3.connect("app-5/bookstore.db")
     cur=conn.cursor()
-    cur.execute("DELETE FROM store WHERE item=?",(item,))
+    cur.execute("DELETE FROM books WHERE title=?",(title,))
     conn.commit()
     conn.close
 
-def update(item,quantity,price):
-    conn=sqlite3.connect("classes/15-Databases/lite.db")
+def update(title,author,year,isbn):
+    conn=sqlite3.connect("app-5/bookstore.db")
     cur=conn.cursor()
-    cur.execute("UPDATE store SET quantity=?, price=? WHERE item=?",(quantity,price,item))
+    cur.execute("UPDATE books SET title=?, author=?, year=?, isbn=? WHERE title=?",(title,author,year,isbn))
     conn.commit()
     conn.close
 
