@@ -42,6 +42,7 @@ def insert():
     cur.execute("INSERT INTO books VALUES(?,?,?,?)",(title,author,year,isbn))
     conn.commit()
     conn.close()
+    clear_text()
 
 def delete():
     conn=sqlite3.connect("app-5/bookstore.db")
@@ -86,6 +87,12 @@ def onselect(event):
     entry_author_var.set(values[1])
     entry_year_var.set(values[2])
     entry_isbn_var.set(values[3])
+
+def clear_text():
+    entry_title_var.set("")
+    entry_author_var.set("")
+    entry_year_var.set("")
+    entry_isbn_var.set("")
 
 # title input area
 label_title=Label(window,text="Title: ")
