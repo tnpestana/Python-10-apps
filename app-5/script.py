@@ -96,5 +96,13 @@ button_deleteselected.grid(row=6,column=3)
 button_close=Button(window,text="Close",width=15)
 button_close.grid(row=7,column=3)
 
+# listbox
+listbox=Listbox(window,height=5)
+listbox.grid(row=2,column=0,rowspan=6,columnspan=2)
+
+scrollbar=Scrollbar(window)
+scrollbar.grid(row=2,column=2,rowspan=6)
+
+
 # end program and close window
 window.mainloop()
