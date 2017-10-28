@@ -20,6 +20,7 @@ def create_table():
     conn.close()
 
 def view():
+    listbox.delete(0, END)
     conn=sqlite3.connect("app-5/bookstore.db")
     cur=conn.cursor()
     cur.execute("SELECT * FROM books")
@@ -54,6 +55,13 @@ def update(title,author,year,isbn):
     conn.commit()
     conn.close
 
+def onselect(event):
+    # Tkinter passes an event object to onselect()
+    w = event.widget
+    entry_title_var = w.curselection()[0]
+    entry_author = w.curselection()[1]
+    entry_year_var = w.curselection()[2]
+    entry_isbn_var = w.curselection()[3]
 
 # title input area
 label_title=Label(window,text="Title: ")
@@ -100,10 +108,10 @@ button_close.grid(row=7,column=3)
 # listbox
 listbox=Listbox(window,height=5)
 listbox.grid(row=2,column=0,rowspan=6,columnspan=2)
+listbox.bind('<<ListboxSelect>>', onselect)
 
 scrollbar=Scrollbar(window)
 scrollbar.grid(row=2,column=2,rowspan=6)
-
 
 # end program and close window
 window.mainloop()
