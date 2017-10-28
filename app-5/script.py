@@ -51,10 +51,14 @@ def delete():
     conn.close
     view()
 
-def update(title,author,year,isbn):
+def update():
+    title=entry_title_var.get()
+    author=entry_author_var.get()
+    year=entry_year_var.get()
+    isbn=entry_isbn_var.get()
     conn=sqlite3.connect("app-5/bookstore.db")
     cur=conn.cursor()
-    cur.execute("UPDATE books SET title=?, author=?, year=?, isbn=? WHERE title=?",(title,author,year,isbn))
+    cur.execute("UPDATE books SET title=?, author=?, year=?, isbn=? WHERE title=?",(title,author,year,isbn,title))
     conn.commit()
     conn.close
 
@@ -105,7 +109,7 @@ button_searchentry=Button(window,text="Search Entry",width=15)
 button_searchentry.grid(row=3,column=3)
 button_addentry=Button(window,text="Add Entry",width=15,command=insert)
 button_addentry.grid(row=4,column=3)
-button_updateselected=Button(window,text="Update Selected",width=15)
+button_updateselected=Button(window,text="Update Selected",width=15,command=update)
 button_updateselected.grid(row=5,column=3)
 button_deleteselected=Button(window,text="Delete Selected",width=15,command=delete)
 button_deleteselected.grid(row=6,column=3)
