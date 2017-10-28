@@ -26,7 +26,8 @@ def view():
     # store the elements in our table as a list
     rows=cur.fetchall()
     conn.close()
-    print(rows)
+    for item in rows:
+        listbox.insert(END,item)
 
 def insert():
     title=entry_title_var.get()
