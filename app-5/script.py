@@ -52,10 +52,6 @@ def update(item,quantity,price):
 #print(view())
 ############################################################
 
-# create a new button
-#b1=Button(window,text="Convert",command=km_to_miles)
-#b1.grid(row=2,column=4)
-
 # title input area
 label_title=Label(window,text="Title: ")
 label_title.grid(row=0,column=0)
@@ -83,6 +79,20 @@ label_isbn.grid(row=1,column=2)
 entry_isbn_var=StringVar()
 entry_isbn=Entry(window,textvariable=entry_isbn_var)
 entry_isbn.grid(row=1,column=3)
+
+# buttons
+button_viewall=Button(window,text="View All",width=15)
+button_viewall.grid(row=2,column=3)
+button_searchentry=Button(window,text="Search Entry",width=15)
+button_searchentry.grid(row=3,column=3)
+button_addentry=Button(window,text="Add Entry",width=15)
+button_addentry.grid(row=4,column=3)
+button_updateselected=Button(window,text="Update Selected",width=15)
+button_updateselected.grid(row=5,column=3)
+button_deleteselected=Button(window,text="Delete Selected",width=15)
+button_deleteselected.grid(row=6,column=3)
+button_close=Button(window,text="Close",width=15)
+button_close.grid(row=7,column=3)
 
 # end program and close window
 window.mainloop()
