@@ -62,6 +62,18 @@ def update():
     conn.commit()
     conn.close
 
+def search():
+    title=entry_title_var.get()
+    conn=sqlite3.connect("app-5/bookstore.db")
+    cur=conn.cursor()
+    cur.execute("SELECT * FROM books WHERE title=?",(title,))
+    rows=cur.fetchall()
+    conn.close()
+    #n=1
+    for item in rows:
+        listbox.insert(END,item) #str(n)+": "+item[0]+", "+item[1]+", "+item[2]+", "+item[3])
+        #n+=1
+
 def onselect(event):
     # Tkinter passes an event object to onselect()
     w = event.widget
@@ -105,7 +117,7 @@ entry_isbn.grid(row=1,column=3)
 # buttons
 button_viewall=Button(window,text="View All",width=15,command=view)
 button_viewall.grid(row=2,column=3)
-button_searchentry=Button(window,text="Search Entry",width=15)
+button_searchentry=Button(window,text="Search Entry",width=15,command=search)
 button_searchentry.grid(row=3,column=3)
 button_addentry=Button(window,text="Add Entry",width=15,command=insert)
 button_addentry.grid(row=4,column=3)
