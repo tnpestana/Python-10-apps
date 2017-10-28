@@ -27,10 +27,10 @@ def view():
     # store the elements in our table as a list
     rows=cur.fetchall()
     conn.close()
-    n=1
+    #n=1
     for item in rows:
-        listbox.insert(END,str(n)+": "+item[0]+", "+item[1]+", "+item[2]+", "+item[3])
-        n+=1
+        listbox.insert(END,item) #str(n)+": "+item[0]+", "+item[1]+", "+item[2]+", "+item[3])
+        #n+=1
 
 def insert():
     title=entry_title_var.get()
@@ -61,10 +61,14 @@ def update(title,author,year,isbn):
 def onselect(event):
     # Tkinter passes an event object to onselect()
     w = event.widget
-    print(w.curselection()[0])
-    #entry_author = w.curselection()[1]
-    #entry_year_var = w.curselection()[2]
-    #entry_isbn_var = w.curselection()[3]
+    index=int(w.curselection()[0])
+    value=str(w.get(index))
+    value_list=value.split()
+    print(value_list)
+    entry_title_var.set(value_list[0])
+    entry_author_var.set(value_list[1])
+    entry_year_var.set(value_list[2])
+    entry_isbn_var.set(value_list[3])
 
 # title input area
 label_title=Label(window,text="Title: ")
