@@ -63,6 +63,8 @@ def update():
     cur.execute("UPDATE books SET title=?, author=?, year=?, isbn=? WHERE title=?",(title,author,year,isbn,title))
     conn.commit()
     conn.close
+    view()
+    clear_text()
 
 def search():
     listbox.delete(0, END)
