@@ -28,7 +28,7 @@ def view():
     rows=cur.fetchall()
     conn.close()
     for item in rows:
-        listbox.insert(END,item)
+        listbox.insert(END,item[0]+", "+item[1]+", "+item[2]+", "+item[3])
 
 def insert():
     title=entry_title_var.get()
