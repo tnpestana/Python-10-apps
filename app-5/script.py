@@ -51,6 +51,7 @@ def delete():
     conn.commit()
     conn.close
     view()
+    clear_text()
 
 def update():
     title=entry_title_var.get()
