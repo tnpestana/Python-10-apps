@@ -62,13 +62,13 @@ def onselect(event):
     # Tkinter passes an event object to onselect()
     w = event.widget
     index=int(w.curselection()[0])
-    value=str(w.get(index))
-    value_list=value.split()
-    print(value_list)
-    entry_title_var.set(value_list[0])
-    entry_author_var.set(value_list[1])
-    entry_year_var.set(value_list[2])
-    entry_isbn_var.set(value_list[3])
+    values=list(w.get(index))
+    #value_list=value.split()
+    print(values)
+    entry_title_var.set(values[0])
+    entry_author_var.set(values[1])
+    entry_year_var.set(values[2])
+    entry_isbn_var.set(values[3])
 
 # title input area
 label_title=Label(window,text="Title: ")
