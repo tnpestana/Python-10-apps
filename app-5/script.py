@@ -27,8 +27,10 @@ def view():
     # store the elements in our table as a list
     rows=cur.fetchall()
     conn.close()
+    n=1
     for item in rows:
-        listbox.insert(END,item[0]+", "+item[1]+", "+item[2]+", "+item[3])
+        listbox.insert(END,str(n)+": "+item[0]+", "+item[1]+", "+item[2]+", "+item[3])
+        n+=1
 
 def insert():
     title=entry_title_var.get()
@@ -41,12 +43,13 @@ def insert():
     conn.commit()
     conn.close()
 
-def delete(title):
+def delete():
     conn=sqlite3.connect("app-5/bookstore.db")
     cur=conn.cursor()
-    cur.execute("DELETE FROM books WHERE title=?",(title,))
+    cur.execute("DELETE FROM books WHERE title=?",(entry_title_var.get(),))
     conn.commit()
     conn.close
+    view()
 
 def update(title,author,year,isbn):
     conn=sqlite3.connect("app-5/bookstore.db")
@@ -58,10 +61,10 @@ def update(title,author,year,isbn):
 def onselect(event):
     # Tkinter passes an event object to onselect()
     w = event.widget
-    entry_title_var = w.curselection()[0]
-    entry_author = w.curselection()[1]
-    entry_year_var = w.curselection()[2]
-    entry_isbn_var = w.curselection()[3]
+    print(w.curselection()[0])
+    #entry_author = w.curselection()[1]
+    #entry_year_var = w.curselection()[2]
+    #entry_isbn_var = w.curselection()[3]
 
 # title input area
 label_title=Label(window,text="Title: ")
@@ -100,7 +103,7 @@ button_addentry=Button(window,text="Add Entry",width=15,command=insert)
 button_addentry.grid(row=4,column=3)
 button_updateselected=Button(window,text="Update Selected",width=15)
 button_updateselected.grid(row=5,column=3)
-button_deleteselected=Button(window,text="Delete Selected",width=15)
+button_deleteselected=Button(window,text="Delete Selected",width=15,command=delete)
 button_deleteselected.grid(row=6,column=3)
 button_close=Button(window,text="Close",width=15)
 button_close.grid(row=7,column=3)
