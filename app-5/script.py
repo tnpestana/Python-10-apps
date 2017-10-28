@@ -26,9 +26,13 @@ def view():
     # store the elements in our table as a list
     rows=cur.fetchall()
     conn.close()
-    return rows
+    print(rows)
 
-def insert(title,author,year,isbn):
+def insert():
+    title=entry_title_var.get()
+    author=entry_author_var.get()
+    year=entry_year_var.get()
+    isbn=entry_isbn_var.get()
     conn=sqlite3.connect("app-5/bookstore.db")
     cur=conn.cursor()
     cur.execute("INSERT INTO books VALUES(?,?,?,?)",(title,author,year,isbn))
@@ -79,11 +83,11 @@ entry_isbn=Entry(window,textvariable=entry_isbn_var)
 entry_isbn.grid(row=1,column=3)
 
 # buttons
-button_viewall=Button(window,text="View All",width=15,command=print(view()))
+button_viewall=Button(window,text="View All",width=15,command=view)
 button_viewall.grid(row=2,column=3)
 button_searchentry=Button(window,text="Search Entry",width=15)
 button_searchentry.grid(row=3,column=3)
-button_addentry=Button(window,text="Add Entry",width=15,command=insert(entry_title_var.get(),entry_author_var.get(),entry_year_var.get(),entry_isbn_var.get()))
+button_addentry=Button(window,text="Add Entry",width=15,command=insert)
 button_addentry.grid(row=4,column=3)
 button_updateselected=Button(window,text="Update Selected",width=15)
 button_updateselected.grid(row=5,column=3)
