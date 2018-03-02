@@ -39,3 +39,5 @@
 
 15. Intro to Databases
   > sqlite3 (SQLLite) and psycopg2 (PostgreSQL) libraries
+
+16. App 5: Desktop Database Application
